@@ -19,7 +19,8 @@ namespace RecycleItRight.Entity
             string studentId,
             string firstName,
             string lastName,
-            Language preferredLanguage
+            Language preferredLanguage,
+            Role role = Role.Student
             )
             : base(
                   userId,
@@ -39,6 +40,11 @@ namespace RecycleItRight.Entity
         {
             PrefferedLanguage = newLanguage;
             Console.WriteLine("Language changed to " + newLanguage);
+        }
+
+        public void ChangeSecondaryEmail(string email) {
+            SecondaryEmail = email;
+            Console.WriteLine("Secondary email changed to " + email);
         }
     }
     public enum Language

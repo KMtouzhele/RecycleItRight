@@ -17,7 +17,8 @@ namespace RecycleItRight.Entity
             string secondaryEmail,
             string firstName,
             string lastName,
-            string staffId
+            string staffId,
+            Role role = Role.Staff
             ) : base (
                 userId,
                 username,

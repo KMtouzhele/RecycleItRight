@@ -15,7 +15,9 @@ namespace RecycleItRight.Entity
         public string Email { get; set; }
         public string Password { get; set; }
         public string SecondaryEmail { get; set; }
-        public User(string userId, string username, string firstName, string lastName, string email, string password, string secondaryEmail) {
+        public Role Role { get; set; }
+        public User(string userId, string username, string firstName, string lastName, string email, string password, string secondaryEmail)
+        {
             UserId = userId;
             Username = username;
             FirstName = firstName;
@@ -24,5 +26,10 @@ namespace RecycleItRight.Entity
             Password = password;
             SecondaryEmail = secondaryEmail;
         }
+    }
+
+    public enum Role { 
+        Staff,
+        Student
     }
 }
