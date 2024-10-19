@@ -10,23 +10,20 @@ namespace RecycleItRight.Entity
     {
         public string StaffId { get; set; }
         public Staff(
-            string userId,
             string username,
             string email,
             string password,
-            string secondaryEmail,
             string firstName,
             string lastName,
+            string secondaryEmail,
             string staffId,
             Role role = Role.Staff
             ) : base (
-                userId,
                 username,
-                firstName,
-                lastName,
                 email,
                 password,
-                secondaryEmail
+                firstName,
+                lastName
                 )
         {
             StaffId = staffId;

@@ -11,25 +11,23 @@ namespace RecycleItRight.Entity
         string StudentId { get; set; }
         Language PrefferedLanguage { get; set; }
         public Student(
-            string userId,
             string username,
             string email,
             string password,
-            string secondaryEmail,
-            string studentId,
             string firstName,
             string lastName,
+            string secondaryEmail,
+            string studentId,
+
             Language preferredLanguage,
             Role role = Role.Student
             )
-            : base(
-                  userId,
-                  username, 
+            : base (
+                  username,
+                  email,
+                  password,
                   firstName,
-                  lastName,
-                  email, 
-                  password, 
-                  secondaryEmail
+                  lastName
                   )
         {
             StudentId = studentId;
@@ -42,10 +40,6 @@ namespace RecycleItRight.Entity
             Console.WriteLine("Language changed to " + newLanguage);
         }
 
-        public void ChangeSecondaryEmail(string email) {
-            SecondaryEmail = email;
-            Console.WriteLine("Secondary email changed to " + email);
-        }
     }
     public enum Language
     {

@@ -1,4 +1,5 @@
-﻿using RecycleItRight.Entity;
+﻿using RecycleItRight.Adapter;
+using RecycleItRight.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,20 +10,41 @@ namespace RecycleItRight.Controller
 {
     public class AuthenticationController
     {
+        public UserAdapter userAdapter;
+        public AuthenticationController()
+        {
+            this.userAdapter = new UserAdapter();
+        }
         public void Register(User newUser)
         {
-            Console.WriteLine("--------------------Registering---------------------");
-            Console.WriteLine("Registering a new user named " + newUser.FirstName + newUser.LastName);
-            Console.WriteLine("His password is " + newUser.Password);
-            Console.WriteLine("--------------------Register Complete---------------------\n");
+            if (newUser.FirstName.Length > 0 && newUser.LastName.Length > 0) {
+                userAdapter.SaveNewUser(newUser);
+            }
+            else
+            {
+                Console.WriteLine("Invalid User Info: First Name and Last Name are required!");
+            }
         }
 
-        public void Login(User user)
+        public void Login(string username, string password)
         {
-            Console.WriteLine("--------------------Loging In---------------------");
-            Console.WriteLine("Logging in " + user.FirstName + user.LastName);
-            Console.WriteLine("Welcome " + user.FirstName + user.LastName);
-            Console.WriteLine("--------------------Registering---------------------\n");
+            User? user = userAdapter.FetchUserByUsername(username);
+            if (user != null)
+            {
+                if (user.Password == password)
+                {
+                    Console.WriteLine("User " + user.FirstName + " " + user.LastName + " logged in!");
+                }
+                else
+                {
+                    Console.WriteLine("Wrong Password!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Username Not Registered!");
+            }
         }
+
     }
 }

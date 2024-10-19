@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RecycleItRight.Adapter;
+using RecycleItRight.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,24 +10,24 @@ namespace RecycleItRight.Controller
 {
     public class ScanController
     {
-        public bool ScanItem(string item)
+        public ItemAdapter itemAdapter;
+        public ScanController()
         {
-            Console.WriteLine("--------------------Scanning---------------------");
-            Console.WriteLine("Scanning item " + item + "...");
-            int random = new Random().Next(0, 2);
-            if (random == 0)
-            {
-                Console.WriteLine("Item detected");
-                Console.WriteLine("--------------------Scanning Complete---------------------\n");
-                return true;
+            this.itemAdapter = new ItemAdapter();
+        }
+        public Item? Detect(string image) {
+            if (itemAdapter.FetchItem(image) == null) {
+                return null;
             }
             else
             {
-                Console.WriteLine("Item detetion failed. Please search manully.");
-                Console.WriteLine("--------------------Scanning Complete---------------------\n");
-                return false;
+                Item item = itemAdapter.FetchItem(image)!;
+                itemAdapter.IncrementSearch(item);
+                return item;
             }
-
+        }
+        public void HandleDetectionFailure() {
+            Console.WriteLine("Navigating to Mannual Search...");
         }
     }
 }
