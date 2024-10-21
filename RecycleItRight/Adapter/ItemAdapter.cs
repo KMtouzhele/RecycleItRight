@@ -17,7 +17,7 @@ namespace RecycleItRight.Adapter
             items.Add(item);
             Console.WriteLine("Item " + item.Name + " saved to database...");
         }
-        public Item? FetchItem(string image) {
+        public Item? FetchItemByImg(string image) {
             DBConnection();
             int randomNumber = new Random().Next(0, items.Count);
             if (randomNumber == items.Count) {
@@ -32,6 +32,19 @@ namespace RecycleItRight.Adapter
             }
         }
 
+        public Item? FetchItemByName(string keyword) {
+            DBConnection();
+            foreach (Item item in items)
+            {
+                if (item.Name == keyword)
+                {
+                    Console.WriteLine("Item " + item.Name + " found in database...");
+                    return item;
+                }
+            }
+            Console.WriteLine("Item not found in database...");
+            return null;
+        }
         public void DeleteItem(Guid ItemId) {
             DBConnection();
             foreach (Item item in items)

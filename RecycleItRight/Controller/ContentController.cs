@@ -25,5 +25,8 @@ namespace RecycleItRight.Controller
         {
             contentAdapter.DeleteContent(contentId);
         }
+        public List<EducationalContent> DisplayEducationalContent(Category category) {
+            return contentAdapter.fetchEducationalByCategory(category);
+        }
     }
 }

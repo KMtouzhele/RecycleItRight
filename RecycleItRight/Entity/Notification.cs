@@ -17,5 +17,10 @@ namespace RecycleItRight.Entity
             Title = title;
             Subtitle = subtitle;
         }
+        public void Notify()
+        {
+            Console.WriteLine("Title: " + Title);
+            Console.WriteLine("Subtitle: " + Subtitle);
+        }
     }
 }

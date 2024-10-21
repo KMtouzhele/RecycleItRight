@@ -17,6 +17,27 @@ namespace RecycleItRight.Adapter
             users.Add(user);
             Console.WriteLine("User " + user.FirstName + " " + user.LastName + " saved to the database!");
         }
+        public bool UpdateUser(User user) {
+            DBConnection();
+            foreach (User u in users)
+            {
+                if (u.UserId == user.UserId)
+                {
+                    u.Username = user.Username;
+                    u.Email = user.Email;
+                    u.Password = user.Password;
+                    u.FirstName = user.FirstName;
+                    u.LastName = user.LastName;
+                    u.Phone = user.Phone;
+                    u.SecondaryEmail = user.SecondaryEmail;
+                    u.NotificationPreference = user.NotificationPreference;
+                    u.Role = user.Role;
+                    Console.WriteLine("User " + user.FirstName + " " + user.LastName + " updated in the database!");
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public User? FetchUserByUsername(string username) {
             DBConnection();

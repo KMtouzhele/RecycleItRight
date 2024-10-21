@@ -34,6 +34,7 @@ namespace RecycleItRight.Entity
         Article,
         Tip,
         Video,
-        Quiz
+        Quiz,
+        Default
     }
 }

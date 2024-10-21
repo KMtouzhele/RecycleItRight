@@ -46,5 +46,9 @@ namespace RecycleItRight.Controller
             }
         }
 
+        public void UpdateProfile(User updatedUser) {
+            userAdapter.UpdateUser(updatedUser);
+        }
+
     }
 }

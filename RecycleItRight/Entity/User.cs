@@ -30,12 +30,6 @@ namespace RecycleItRight.Entity
             SecondaryEmail = "";
             NotificationPreference = true;
         }
-        public void UpdateProfile(string phone, string secondaryEmail, bool notificationPreference)
-        {
-            Phone = phone;
-            SecondaryEmail = secondaryEmail;
-            NotificationPreference = notificationPreference;
-        }
     }
 
     public enum Role { 

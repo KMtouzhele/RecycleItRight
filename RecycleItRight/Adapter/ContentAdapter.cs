@@ -60,6 +60,21 @@ namespace RecycleItRight.Adapter
                 }
             }
         }
+        public DisposalContent? FetchDisposalContent(Item item) {
+            DBConnect();
+            foreach (Content content in contents)
+            {
+                if (content is DisposalContent)
+                {
+                    DisposalContent disposalContent = (DisposalContent)content;
+                    if (disposalContent.Item == item)
+                    {
+                        return disposalContent;
+                    }
+                }
+            }
+            return null;
+        }
 
         public string fetchEngagementData() {
             return "This is engagement data";
